@@ -24,5 +24,5 @@ This is a NodeJs reference app that uses PassportJs for authentication with Mong
 
 ## TODO
 
-[ ] Update user details   
-[ ] User verification using nodemail
+- [ ] Update user details   
+- [ ] User verification using nodemail
