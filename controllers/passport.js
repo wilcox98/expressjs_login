@@ -56,7 +56,7 @@ passport.use('signup', new Strategy({passReqToCallback : true},
         } else {
           // if there is no user with that email
           // create the user
-          var newUser = new User();
+          var newUser = new Users();
 
           // set the user's local credentials
           newUser.username = username;
@@ -97,7 +97,7 @@ passport.serializeUser(function (user, cb) {
 });
 //deserialize
 passport.deserializeUser(function (id, cb) {
-  User.findById(id, function (err, user) {
+  Users.findById(id, function (err, user) {
     if (err) {
       console.log(err);
       return cb(err);
