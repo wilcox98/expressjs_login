@@ -16,6 +16,13 @@ This is a NodeJs reference app that uses PassportJs for authentication with Mong
 | /home                       |  GET   |  Gets the home page with the logged in user         |
 
 ## Development 
+Note: Create `.env` file and update.
+```
+SESSION_SECRET="YOUR_SECRET"
+NODE_ENV=""
+```
+### Setup
+
 1. Clone this repository `git clone https://github.com/wilcox98/expressjs_login.git`
 2. Navigate into the directory `cd expressjs_login/`
 3. Install npm dependencies `npm i` 
@@ -24,5 +31,6 @@ This is a NodeJs reference app that uses PassportJs for authentication with Mong
 
 ## TODO
 
+- [ ] Include flash messages 
 - [ ] Update user details   
 - [ ] User verification using nodemail
