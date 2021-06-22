@@ -14,7 +14,9 @@ const Strategy = require('passport-local').Strategy;
  */
 //login setup
 passport.use('login', new Strategy({passReqToCallBack: true},
-  function (req, username, password, cb) {
+  function (username, password, cb) {
+    //console for pass and username
+    console.log(username, password)
     Users.findOne({ 'username': username }, function (err, user) {
       if (err) {
         //console.log(err);
@@ -25,12 +27,12 @@ passport.use('login', new Strategy({passReqToCallBack: true},
         //return cb(null, false);
         console.log('User Not Found with username ' + username);
         //req.flash({message :'User not found'})
-        return cb(null, false, req.flash('message', 'Invalid username or password.'));
+        return cb(null, false, { message: 'Invalid username or password.'});
       }
       if (!hashPassword(user,password)) {
         //wrong password handling
         console.log('Invalid Password');
-        return cb(null, false, req.flash('message', 'Invalid username or password.') ); // redirect back to login page 
+        return cb(null, false,  { message: 'Invalid username or password.'} ); // redirect back to login page 
       }
       //when user and password match and return sucess
       return cb(null, user);
@@ -41,7 +43,7 @@ passport.use('login', new Strategy({passReqToCallBack: true},
   }));
 //register setup
 passport.use('signup', new Strategy({passReqToCallback : true},
-  function (req,username, password, cb) {
+  function (username, password, cb) {
     findOrCreateUser = function () {
       //query the db and find any user
       Users.findOne({ 'username': username }, function (err, user) {
@@ -52,7 +54,7 @@ passport.use('signup', new Strategy({passReqToCallback : true},
         //if the user exists send a message 
         if (user) {
           console.log('the user exists ' + username);
-          return cb(null, false , req.flash('message', 'The username exists'));
+          return cb(null, false , {message: 'The username exists'});
         } else {
           // if there is no user with that email
           // create the user
@@ -76,7 +78,7 @@ passport.use('signup', new Strategy({passReqToCallback : true},
               throw err;
             }
             //console.log('User Registration succesfull');
-            return cb(null, newUser, req.flash('message', 'User Registration succesful'));
+            return cb(null, newUser, {message: 'User Registration succesful'});
           })
         }
       })

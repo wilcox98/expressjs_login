@@ -10,15 +10,20 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 /**get login page */
-router.get('/login', function(req, res, next) {
-  res.render('login', { title: 'Express' });
+router.get('/login', function(req, res) {
+  console.log(req.flash("error"))
+  res.render('login', { title: 'Express' , message: req.flash('error')});
 });
 
 router.post('/login', passport.authenticate('login', {
-  successRedirect: '/home',
+ // successRedirect: '/home',
   failureRedirect:'/login',
   failureFlash: true
-}));
+}),function (req,res) {
+  res.redirect('/user/' + req.user.username)
+}
+
+);
 /**Get signup page */
 router.get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Express' });
