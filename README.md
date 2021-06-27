@@ -13,7 +13,7 @@ This is a NodeJs reference app that uses PassportJs for authentication with Mong
 | /login                       |  POST   |  Logs in the user using the user input          |
 | /signup                       |  GET   |  Gets the signup page          |
 | /signup                       |  POST   |  Signs up a new user          |
-| /home                       |  GET   |  Gets the home page with the logged in user         |
+| /user/:name                       |  GET   |  Gets the home page with the logged in user         |
 
 ## Development 
 Note: Create `.env` file and update.
