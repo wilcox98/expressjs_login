@@ -11,8 +11,10 @@ router.get('/', function(req, res, next) {
 });
 /**get login page */
 router.get('/login', function(req, res) {
-  console.log(req.flash("error"))
-  res.render('login', { title: 'Express' , message: req.flash('error')});
+  
+  const msg =  req.flash('error')
+  
+  res.render('login', { title: 'Express' , message: msg});
 });
 
 router.post('/login', passport.authenticate('login', {
@@ -26,7 +28,8 @@ router.post('/login', passport.authenticate('login', {
 );
 /**Get signup page */
 router.get('/signup', function(req, res, next) {
-  res.render('signup', { title: 'Express' });
+  const msg =  req.flash('error')
+  res.render('signup', { title: 'Signup',message: msg });
 });
 
 router.post('/signup', passport.authenticate('signup', {
