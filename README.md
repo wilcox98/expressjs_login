@@ -31,6 +31,6 @@ NODE_ENV=""
 
 ## TODO
 
-- [ ] Include flash messages 
+- [x] Include flash messages 
 - [ ] Update user details   
 - [ ] User verification using nodemail

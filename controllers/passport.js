@@ -14,7 +14,7 @@ const Strategy = require('passport-local').Strategy;
  */
 //login setup
 passport.use('login', new Strategy({passReqToCallBack: true},
-  function (username, password, cb) {
+  function (req,username, password, cb) {
     //console for pass and username
     console.log(username, password)
     Users.findOne({ 'username': username }, function (err, user) {
@@ -43,7 +43,7 @@ passport.use('login', new Strategy({passReqToCallBack: true},
   }));
 //register setup
 passport.use('signup', new Strategy({passReqToCallback : true},
-  function (username, password, cb) {
+  function (req,username, password, cb) {
     findOrCreateUser = function () {
       //query the db and find any user
       Users.findOne({ 'username': username }, function (err, user) {
