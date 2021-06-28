@@ -33,10 +33,14 @@ router.get('/signup', function(req, res, next) {
 });
 
 router.post('/signup', passport.authenticate('signup', {
-  successRedirect: '/home',
+  //successRedirect: '/user/'+ req.user.username,
   failureRedirect:'/signup',
   failureFlash: true
-}));
+})
+,function (req,res) {
+  res.redirect('/user/' + req.user.username)
+}
+);
 
 /**
  * Get the Home page
