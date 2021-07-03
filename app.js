@@ -11,6 +11,7 @@ var passport = require("passport");
 var helmet = require("helmet");
 var mongo = require("mongodb");
 var flash = require("connect-flash");
+const methodOverride = require('method-override')
 require("dotenv").config();
 
 var app = express();
@@ -19,7 +20,9 @@ var app = express();
 mongoose
   .connect("mongodb://localhost/express", {
     useNewUrlParser: true,
+    useCreateIndex: true,
     useUnifiedTopology: true,
+    useFindAndModify: false
   })
   .then(() => console.log(" Mongodb Connected"))
   .catch((err) => console.error(err));
@@ -45,6 +48,7 @@ app.use(
     cookie: { maxAge: 10800000 },
   })
 );
+app.use(methodOverride('_method'))
 
 app.use(passport.initialize());
 app.use(passport.session());

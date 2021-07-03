@@ -4,13 +4,14 @@ var bcrypt = require("bcrypt");
 var UserSchema = new mongoose.Schema({
   email: {
     type: String,
-    unique: true,
+    //unique: true,
     required: true,
     trim: true,
+    sparse:true
   },
   username: {
     type: String,
-    unique: true,
+    //unique: true,
     required: true,
     trim: true,
   },
@@ -24,7 +25,7 @@ var UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
+    //required: true,
   },
 });
 /** 
