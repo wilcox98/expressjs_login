@@ -1,6 +1,6 @@
 # MongoDB Expressjs And Passport
 This is a NodeJs reference app that uses PassportJs for authentication with MongoDB to store user credentials. 
-
+EJS and HTML are used to render the frontend.
 
 
 
@@ -8,12 +8,13 @@ This is a NodeJs reference app that uses PassportJs for authentication with Mong
 
 |Route                         |Method  | Description                               |
 |:-----------------------------|:-------|:------------------------------------------|
-| /                       |  GET   |  Gets the index page          |
+| /                            |  GET   |  Gets the index page          |
 | /login                       |  GET   |  Gets the login page          |
-| /login                       |  POST   |  Logs in the user using the user input          |
-| /signup                       |  GET   |  Gets the signup page          |
-| /signup                       |  POST   |  Signs up a new user          |
-| /user/:name                       |  GET   |  Gets the home page with the logged in user         |
+| /login                       |  POST  |  Logs in the user using the user input          |
+| /signup                      |  GET   |  Gets the signup page          |
+| /signup                      |  POST  |  Signs up a new user          |
+| /user/:name                  |  GET   |  Gets the home page with the logged in user         |
+| /user/update                 |  GET   |  Update the user details        |
 
 ## Development 
 Note: Create `.env` file and update.
@@ -32,6 +33,6 @@ NODE_ENV=""
 ## TODO
 
 - [x] Include flash messages 
-- [ ] Update user details 
+- [x] Update user details 
 - [ ] Update user password   
 - [ ] User verification using nodemail
